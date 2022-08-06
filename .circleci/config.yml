@@ -24,8 +24,15 @@ jobs:
       - checkout
       - run: npm i
       - run: npm run lint
+  
     
-    
+  test:
+    docker:
+      - image: cimg/node:13.8.0
+    steps:
+      - checkout
+      - run: npm i
+      - run: npm run test
 
 
 # Invoke jobs via workflows
@@ -34,4 +41,7 @@ workflows:
   say-hello-workflow:
     jobs:
       - build
+      - test:
+          requires:
+            - build
     
