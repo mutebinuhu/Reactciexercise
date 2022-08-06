@@ -19,13 +19,11 @@ jobs:
           command: "echo Hello, World!"
   build:
     docker:
-      - image: cimg/node:18.7.0
-      - image: cimg/python:3.10.6
+      - image: cimg/node:13.8.0
     steps:
       - checkout
-      - run:
-          name: "install dependencies"
-          command: sudo  npm install --global --save && sudo npm run lint
+      - run: npm i
+      - run: npm install
     
     
 
