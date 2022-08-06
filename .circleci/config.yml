@@ -17,10 +17,51 @@ jobs:
       - run:
           name: "Say hello"
           command: "echo Hello, World!"
+  build:
+    docker:
+      - image: cimg/node:18.7.0
+    steps:
+      - checkout
+      - run:
+          name: "install dependencies"
+          command: npm i
+      - run:
+          name: "lint"
+          command: npm run lint
+  test:
+    docker:
+      - image: cimg/node:18.7.0
+
+    steps:
+      - checkout
+      - run:
+          name: "install dependencies"
+          command: npm i
+      - run:
+          name: "test"
+          command: npm run test
+  analyze:
+    docker:
+      - image: cimg/node:18.7.0
+    steps:
+      - checkout
+      - run:
+          name: "analyze"
+          command: npm audit
+    
+
+      
+
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
   say-hello-workflow:
     jobs:
-      - say-hello
+      - build
+      - test:
+          requires:
+            - build
+      - analyze:
+          requires:
+            - test
