@@ -25,7 +25,7 @@ jobs:
       - checkout
       - run:
           name: "install dependencies"
-          command: sudo  npm install --global --save && npm run lint
+          command: sudo  npm install --global --save && sudo npm run lint
     
     
 
