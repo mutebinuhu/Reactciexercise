@@ -24,13 +24,10 @@ jobs:
       - checkout
       - run:
           name: "install dependencies"
-          command: npm install --global windows-build-tools --save
+          command: npm install --global --save
       - run:
           name: "lint"
           command: npm run lint
-
-    
-
     
 
 
