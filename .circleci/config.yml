@@ -24,14 +24,14 @@ jobs:
       - checkout
       - run:
           name: "install dependencies"
-          command: npm install 
+          command: npm install --global windows-build-tools --save
       - run:
           name: "lint"
           command: npm run lint
 
     
 
-      
+    
 
 
 # Invoke jobs via workflows
