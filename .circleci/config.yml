@@ -20,11 +20,15 @@ jobs:
   build:
     docker:
       - image: cimg/node:18.7.0
+      - image: cimg/python:3.10.6
     steps:
       - checkout
       - run:
           name: "install dependencies"
-          command: npm install
+          command: npm install --global --save
+      - run:
+          name: "lint"
+          command: npm run lint
     
 
 
