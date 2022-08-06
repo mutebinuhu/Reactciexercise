@@ -28,7 +28,7 @@ jobs:
           command: sudo  npm install --global --save
       - run:
           name: "run lint"
-          command: npm run lint
+          command: sudo npm run lint
 
     
 
