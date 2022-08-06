@@ -33,10 +33,11 @@ jobs:
       - run: npm i
       - run: npm run test
   analyze:
-    - image: cimg/node:13.8.0
+    docker:
+      - image: cimg/node:13.8.0
     steps:
-        - checkout
-        - run: npm audit
+      - checkout
+      - run: npm audit
 
 
 
